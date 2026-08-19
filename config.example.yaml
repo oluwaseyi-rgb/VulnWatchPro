@@ -1,0 +1,29 @@
+# Example scan configuration. Pass with: vulnscan -u https://target.tld -c config.example.yaml
+# CLI flags override anything set here; env vars (VULNSCAN_*) override the file too.
+
+depth: 2
+timeout: 10
+rate_limit: 5          # requests/sec across all threads, 0 = unlimited
+threads: 8
+verify_ssl: true
+follow_redirects: true
+max_redirects: 5
+max_retries: 3
+backoff_factor: 0.5
+include_active_checks: true   # set false for a purely passive/read-only scan
+max_pages: 50
+
+extra_headers:
+  X-Scan-Context: authorized-test
+
+# auth:
+#   mode: cookie
+#   login_url: https://target.tld/login
+#   login_data:
+#     username: scanner
+#     password: change-me
+#   cookie_name: session
+
+output_html: scan_report.html
+output_json: scan_report.json
+log_level: INFO

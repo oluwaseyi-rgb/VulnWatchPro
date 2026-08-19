@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vulnerability Scan Report — https://stripchat.com</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; background: #f4f6f8; color: #1c2833; line-height: 1.5; }
+  .header { background: linear-gradient(135deg, #17202a 0%, #2c3e50 100%); color: white; padding: 36px 48px; }
+  .header h1 { font-size: 1.7rem; font-weight: 700; }
+  .header .subtitle { opacity: 0.7; margin-top: 6px; font-size: 0.9rem; }
+  .container { max-width: 980px; margin: 32px auto; padding: 0 20px 60px; }
+  .card { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 24px; overflow: hidden; }
+  .card-title { font-size: 1rem; font-weight: 700; padding: 16px 22px; border-bottom: 1px solid #eee; color: #2c3e50; }
+  .card-body { padding: 20px 22px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .meta-item label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: #909497; }
+  .meta-item p { font-size: 0.9rem; font-weight: 600; margin-top: 3px; word-break: break-all; }
+  .summary-item { display: grid; grid-template-columns: 80px 1fr 30px; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .summary-label { font-weight: 700; font-size: 0.8rem; }
+  .summary-bar-wrap { background: #eee; border-radius: 4px; height: 12px; overflow: hidden; }
+  .summary-bar { height: 100%; border-radius: 4px; }
+  .summary-count { font-weight: 700; font-size: 0.85rem; text-align: right; }
+  .finding { border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+  .finding-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; flex-wrap: wrap; cursor: pointer; user-select: none; }
+  .badge { padding: 2px 9px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; color: white; letter-spacing: 0.3px; }
+  .finding-title { font-weight: 600; font-size: 0.92rem; flex: 1; min-width: 200px; }
+  .category-tag, .confidence-tag { font-size: 0.72rem; color: #7f8c8d; border: 1px solid #ddd; padding: 1px 8px; border-radius: 10px; background: rgba(255,255,255,0.6); }
+  .chevron { transition: transform 0.15s; color: #999; }
+  .finding.open .chevron { transform: rotate(90deg); }
+  .finding-body { display: none; padding: 4px 16px 16px; font-size: 0.87rem; }
+  .finding.open .finding-body { display: block; }
+  .finding-body p { margin: 6px 0; }
+  .why { background: rgba(0,0,0,0.04); padding: 8px 10px; border-radius: 6px; }
+  .evidence-box { margin-top: 8px; border-top: 1px dashed #ddd; padding-top: 8px; }
+  .fix { background: #eafaf1; padding: 8px 10px; border-radius: 6px; }
+  .dim { color: #909497; font-size: 0.8rem; }
+  code { background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 3px; font-family: 'SF Mono', Consolas, monospace; font-size: 0.85em; word-break: break-all; }
+  pre.snippet { background: #1c2833; color: #d5dbdb; padding: 10px 12px; border-radius: 6px; overflow-x: auto; font-size: 0.78rem; white-space: pre-wrap; word-break: break-all; }
+  .kv-table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.8rem; }
+  .kv-table td { padding: 3px 6px; border-bottom: 1px solid #eee; }
+  .kv-k { color: #7f8c8d; width: 30%; }
+  details summary { cursor: pointer; font-size: 0.8rem; color: #2c3e50; font-weight: 600; margin-top: 6px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  .no-findings { text-align: center; padding: 36px; color: #27ae60; font-size: 1.05rem; font-weight: 700; }
+  .footer { text-align: center; padding: 24px; color: #909497; font-size: 0.8rem; }
+  .stat-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 4px; font-size: 0.8rem; color: #7f8c8d; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Vulnerability Scan Report</h1>
+  <div class="subtitle">https://stripchat.com · For authorized security testing only</div>
+</div>
+<div class="container">
+
+  <div class="card">
+    <div class="card-title">Scan Summary</div>
+    <div class="card-body">
+      <div class="meta-grid">
+        <div class="meta-item"><label>Target</label><p>https://stripchat.com</p></div>
+        <div class="meta-item"><label>Started</label><p>2026-08-19T23:07:00.100747+00:00</p></div>
+        <div class="meta-item"><label>Finished</label><p>2026-08-19T23:07:09.574228+00:00</p></div>
+        <div class="meta-item"><label>Pages Scanned</label><p>1</p></div>
+        <div class="meta-item"><label>Total Findings</label><p>4</p></div>
+      </div>
+      <div class="stat-row">
+        <span>Requests made: <strong>30</strong></span>
+        <span>Retries: <strong>0</strong></span>
+        <span>Rate-limit waits: <strong>0</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Findings by Severity</div>
+    <div class="card-body">
+        <div class="summary-item">
+          <span class="summary-label" style="color:#c0392b">CRITICAL</span>
+          <div class="summary-bar-wrap">
+            <div class="summary-bar" style="width:0%; background:#c0392b;"></div>
+          </div>
+          <span class="summary-count">0</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label" style="color:#e67e22">HIGH</span>
+          <div class="summary-bar-wrap">
+            <div class="summary-bar" style="width:0%; background:#e67e22;"></div>
+          </div>
+          <span class="summary-count">0</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label" style="color:#d4a017">MEDIUM</span>
+          <div class="summary-bar-wrap">
+            <div class="summary-bar" style="width:100%; background:#d4a017;"></div>
+          </div>
+          <span class="summary-count">2</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label" style="color:#2e86c1">LOW</span>
+          <div class="summary-bar-wrap">
+            <div class="summary-bar" style="width:100%; background:#2e86c1;"></div>
+          </div>
+          <span class="summary-count">2</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label" style="color:#7f8c8d">INFO</span>
+          <div class="summary-bar-wrap">
+            <div class="summary-bar" style="width:0%; background:#7f8c8d;"></div>
+          </div>
+          <span class="summary-count">0</span>
+        </div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Findings (4) — click a row to expand evidence</div>
+    <div class="card-body">
+      
+    <div class="finding" style="border-left:4px solid #d4a017;background:#fdf6e3;">
+      <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="badge" style="background:#d4a017;">MEDIUM</span>
+        <span class="finding-title">Missing header: Content-Security-Policy</span>
+        <span class="category-tag">Security Headers</span>
+        <span class="confidence-tag">firm</span>
+        <span class="chevron">▸</span>
+      </div>
+      <div class="finding-body">
+        <p><strong>URL:</strong> <code>https://stripchat.com/</code></p>
+        <p>The response for this URL does not set the &#x27;Content-Security-Policy&#x27; header.</p>
+        <div class="evidence-box"><p class='why'><strong>Why:</strong> &#x27;Content-Security-Policy&#x27; is absent from the response header set (13 headers received; case-insensitive match performed).</p><p><strong>Request:</strong> <code>GET https://stripchat.com/</code></p><p><strong>Response status:</strong> <code>403</code></p></div>
+        <p class='fix'><strong>Fix:</strong> Define a strict Content-Security-Policy to mitigate XSS and data injection.</p>
+        
+      </div>
+    </div>
+    <div class="finding" style="border-left:4px solid #d4a017;background:#fdf6e3;">
+      <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="badge" style="background:#d4a017;">MEDIUM</span>
+        <span class="finding-title">Missing header: X-Content-Type-Options</span>
+        <span class="category-tag">Security Headers</span>
+        <span class="confidence-tag">firm</span>
+        <span class="chevron">▸</span>
+      </div>
+      <div class="finding-body">
+        <p><strong>URL:</strong> <code>https://stripchat.com/</code></p>
+        <p>The response for this URL does not set the &#x27;X-Content-Type-Options&#x27; header.</p>
+        <div class="evidence-box"><p class='why'><strong>Why:</strong> &#x27;X-Content-Type-Options&#x27; is absent from the response header set (13 headers received; case-insensitive match performed).</p><p><strong>Request:</strong> <code>GET https://stripchat.com/</code></p><p><strong>Response status:</strong> <code>403</code></p></div>
+        <p class='fix'><strong>Fix:</strong> Add: X-Content-Type-Options: nosniff</p>
+        
+      </div>
+    </div>
+    <div class="finding" style="border-left:4px solid #2e86c1;background:#eaf2fa;">
+      <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="badge" style="background:#2e86c1;">LOW</span>
+        <span class="finding-title">Missing header: Permissions-Policy</span>
+        <span class="category-tag">Security Headers</span>
+        <span class="confidence-tag">firm</span>
+        <span class="chevron">▸</span>
+      </div>
+      <div class="finding-body">
+        <p><strong>URL:</strong> <code>https://stripchat.com/</code></p>
+        <p>The response for this URL does not set the &#x27;Permissions-Policy&#x27; header.</p>
+        <div class="evidence-box"><p class='why'><strong>Why:</strong> &#x27;Permissions-Policy&#x27; is absent from the response header set (13 headers received; case-insensitive match performed).</p><p><strong>Request:</strong> <code>GET https://stripchat.com/</code></p><p><strong>Response status:</strong> <code>403</code></p></div>
+        <p class='fix'><strong>Fix:</strong> Add a Permissions-Policy header to restrict browser feature access.</p>
+        
+      </div>
+    </div>
+    <div class="finding" style="border-left:4px solid #2e86c1;background:#eaf2fa;">
+      <div class="finding-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="badge" style="background:#2e86c1;">LOW</span>
+        <span class="finding-title">Technology disclosed via &#x27;server&#x27; header</span>
+        <span class="category-tag">Information Disclosure</span>
+        <span class="confidence-tag">firm</span>
+        <span class="chevron">▸</span>
+      </div>
+      <div class="finding-body">
+        <p><strong>URL:</strong> <code>https://stripchat.com/</code></p>
+        <p>The response reveals server/framework version information useful for an attacker fingerprinting the stack.</p>
+        <div class="evidence-box"><p class='why'><strong>Why:</strong> Header &#x27;server&#x27; is present with value &#x27;cloudflare&#x27;.</p><p><strong>Request:</strong> <code> https://stripchat.com/</code></p><p><strong>Response status:</strong> <code>403</code></p><p><strong>Matched:</strong> <code>server: cloudflare</code></p></div>
+        <p class='fix'><strong>Fix:</strong> Remove or generalize the &#x27;server&#x27; response header in server config.</p>
+        
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Scanned URLs (1)</div>
+    <div class="card-body"><ul><li><code>https://stripchat.com</code></li></ul></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Errors (0)</div>
+    <div class="card-body"><ul><li class='dim'>None</li></ul></div>
+  </div>
+
+</div>
+<div class="footer">
+  This tool is for authorized security testing only. Unauthorized scanning may be illegal.
+</div>
+<script>
+  // open CRITICAL/HIGH findings by default for visibility
+  document.querySelectorAll('.finding').forEach(el => {
+    const badge = el.querySelector('.badge');
+    if (badge && (badge.textContent === 'CRITICAL' || badge.textContent === 'HIGH')) {
+      el.classList.add('open');
+    }
+  });
+</script>
+</body>
+</html>
