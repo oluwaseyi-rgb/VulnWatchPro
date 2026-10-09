@@ -6,7 +6,7 @@ one-line explanation of *why* it counts as a vulnerability — not just a
 severity label.
 
 ```
-$ vulnscan -u https://example.com --depth 2
+$ vulnwatchpro -u https://example.com --depth 2
 
 ════════════════════════════════════════════════════════════════════
   VULNERABILITY SCAN REPORT
